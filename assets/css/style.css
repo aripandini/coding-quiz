@@ -1,0 +1,42 @@
+/* Removing Default Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Body Styling */
+body {
+    font-family: Montseratt, Open Sans, sans-serif;
+}
+/* Header Elements, Attributes & Tags */
+header {
+    border-bottom: 5px solid black; 
+    justify-content: space-between;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    display: flex;
+}
+header div a:hover {
+    background: black;
+    color: white;
+    opacity: .8;
+} 
+/* Main Elements, Attributes & Tags */
+.quiz{
+    text-align: center;
+    padding: 10px;
+    justify-content: space-between;
+}
+.quiz h1 {
+    font-size: 35px;
+}
+.startQuiz {
+    font-size: 26px;
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 10px;
+
+}
