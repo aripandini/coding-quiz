@@ -1,2 +1,2 @@
-# module-4-challenge
+# Coding Quiz
 A timed quiz that saves your score.
