@@ -12,14 +12,26 @@
                 <div class="time">Time:</div>
         </header>
         <main>
-            <section class="quiz">
+            <section id="intro" class="intro">
                 <h1> Coding Quiz Challenge </h1>
             <p> Try to answer the following code-related questions within the time limit.
                 Keep in mind that incorrect answers will penalize your score/time by 5 seconds!
             </p>
             <button class="startQuiz">Start Quiz</button>
-
+            </section>
+            <section id="questions" class="hide">
+                <h2 id="questionTitle"> </h2>
+                <div id="options" class="options"></div>
+            </section>
+            <section id="end" class="hide">
+                <h2>Quiz Over!</h2>
+                <p>Your final score is <span id="finalScore"></span>.</p>
+                <p>
+                  Enter initials: <input type="text" id="initials" max="4" />
+                  <button id="submit">Submit</button>
+                </p>
             </section>
         </main>
+        <script src="./assets/js/script-index.js"></script>
     </body>
 </html>

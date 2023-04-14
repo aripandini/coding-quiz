@@ -1,3 +1,5 @@
+/* CREATE VARIABLES LATER */
+
 /* Removing Default Styling */
 * {
     margin: 0;
@@ -17,18 +19,31 @@ header {
     text-align: center;
     display: flex;
 }
+header div a {
+    text-decoration: none;
+}
 header div a:hover {
-    background: black;
-    color: white;
+    color: red;
     opacity: .8;
-} 
+}
+.score {
+    padding: 5px;
+    border-bottom: 2px solid;
+    background-color:;
+
+}
+.time {
+    padding: 5px;
+    border-bottom: 2px solid;
+    background-color:;
+}
 /* Main Elements, Attributes & Tags */
-.quiz{
+.intro{
     text-align: center;
     padding: 10px;
     justify-content: space-between;
 }
-.quiz h1 {
+.intro h1 {
     font-size: 35px;
 }
 .startQuiz {
@@ -38,5 +53,10 @@ header div a:hover {
     font-weight: bold;
     border-radius: 15px;
     padding: 10px;
-
+}
+.options {
+    display: block;
+}
+.hide {
+    display: none;
 }
