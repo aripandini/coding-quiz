@@ -69,7 +69,7 @@ var renderQuestion = function (question) {
     questionSection.innerHTML = "";
 
     var questionHeader = document.createElement("h2");
-    questionHeader.textContent = question.q;
+    questionHeader.textContent = question.question;
 
     var answerA = document.createElement("button");
     answerA.textContent = question.a;
@@ -93,10 +93,39 @@ var renderQuestion = function (question) {
     questionSection.appendChild(answerC);
     questionSection.appendChild(answerD);
 }
-// First 
+// Opens Questions
+var currentQuestionIndex = 0;
+var userScore = 0;
+var correctAnswer = questions[currentQuestionIndex].correct;
+var clickViewScores = document.getElementById("score");
 
+var answerClick = function(event) {
+    event.preventDefault();
+    var userAnswer = event.target.textContent;
+    correctAnswer = questions[currentQuestionIndex].correct;
+}
 // Second
+var quiz = function (event) {
+    event.preventDefault();
+    resetDisplay();
+    renderQuestion(questions[currentQuestionIndex]);
+};
 
+function resetDisplay() {
+    questionSection.innerHTML="";
+    document.querySelector("#intro").style.display = "none";
+}
+function highScores() {
+    let data = localStorage.getItem("object");
+    let getData = JSON.parse(data);
+    let name = getData.name;
+    let score = getData.score;
+    questionSection.innerHTML = "";
+    questionSection.innerHTML = name + " " + score;
+}
+// clickViewScores.addEventListener("click", () => {
+    // highScores();
+// })
 // Third 
 
 clickStart.addEventListener('click', quiz);
