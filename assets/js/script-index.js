@@ -25,11 +25,11 @@ var questions = [{
 },
 {
     question: "String values must be encosed within ____ when being assigned to variables.",
-    a: "1. Quotes",
-    b: "2. Curly brackets",
-    c: "3. Parentheses",
-    d: "4. Square brackets",
-    correct: "1. Quotes",
+    a: "1. ''",
+    b: "2. {}",
+    c: "3. ()",
+    d: "4. []",
+    correct: "1. ''",
 },
 {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
@@ -39,23 +39,27 @@ var questions = [{
     d: "4. console.log",
     correct: "4. console.log",
 }];
+
 //Setting Variables 
 var clickStart = document.getElementById("startQuiz");
 var timerEl = document.getElementById("timer");
-var timeLeft = 120;
-var quizDuration;
+var timeLeft = 60;
+var scoreStorage = {}
+var quizTime;
 var questionSection = document.querySelector("#quiz");
+
 //Timer Function
 function timer() {
     timerEl.textContent = "Time remaining: " + timeLeft + "s";
-    quizDuration = setInterval(function () {
+    quizTime = setInterval(function () {
         if (timeLeft > 0) {
             adjustTime(-1); }
-        //  else {
-            // endQuizPage();
-        // }
+         else {
+            endQuizPage();
+        }
     }, 1000);
 }
+
 function adjustTime(amount) {
     timeLeft += amount;
     if (timeLeft < 0) {
@@ -63,9 +67,10 @@ function adjustTime(amount) {
     }
     timerEl.textContent = "Time remaining: " + timeLeft + "s";
 }
+
 //Start Time + Set Up questions
 clickStart.onclick = timer;
-var renderQuestion = function (question) {
+var openQuestion = function (question) {
     questionSection.innerHTML = "";
 
     var questionHeader = document.createElement("h2");
@@ -93,39 +98,114 @@ var renderQuestion = function (question) {
     questionSection.appendChild(answerC);
     questionSection.appendChild(answerD);
 }
-// Opens Questions
+// Question Logics
 var currentQuestionIndex = 0;
 var userScore = 0;
 var correctAnswer = questions[currentQuestionIndex].correct;
-var clickViewScores = document.getElementById("score");
 
 var answerClick = function(event) {
     event.preventDefault();
     var userAnswer = event.target.textContent;
     correctAnswer = questions[currentQuestionIndex].correct;
+
+    // determine if answer is wrong or right
+ var rightWrong = document.querySelector("#rightWrong");
+    if (userAnswer !== correctAnswer) {
+         adjustTime(-5);
+        rightWrong.textContent = "Wrong!";
+        currentQuestionIndex++;
+     if (currentQuestionIndex >= questions.length) {
+         endQuizPage();
+     } else {openQuestion(questions[currentQuestionIndex])};
 }
-// Second
+ else if (userAnswer === correctAnswer) {
+     currentQuestionIndex++;
+     rightWrong.textContent = "Correct!";
+     userScore++;
+     if (currentQuestionIndex >= questions.length) {
+         endQuizPage();
+     } else {openQuestion(questions[currentQuestionIndex])};
+ }
+};
+
 var quiz = function (event) {
     event.preventDefault();
     resetDisplay();
-    renderQuestion(questions[currentQuestionIndex]);
+    openQuestion(questions[currentQuestionIndex]);
 };
 
 function resetDisplay() {
     questionSection.innerHTML="";
     document.querySelector("#intro").style.display = "none";
 }
-function highScores() {
-    let data = localStorage.getItem("object");
-    let getData = JSON.parse(data);
-    let name = getData.name;
-    let score = getData.score;
-    questionSection.innerHTML = "";
-    questionSection.innerHTML = name + " " + score;
-}
-// clickViewScores.addEventListener("click", () => {
-    // highScores();
-// })
-// Third 
 
+// End of Quiz  
+var initials; 
+function endQuizPage() {
+    resetDisplay();
+    timerEl.textContent = "";
+    clearInterval(quizTime);
+
+    var endPageTitle = document.createElement("h2");
+    questionSection.appendChild(endPageTitle);
+
+    var endPageScore = document.createElement("p");
+    questionSection.appendChild(endPageScore);
+
+    endPageTitle.innerHTML = "Quiz Over!";
+    endPageScore.innerHTML = "Your final score is " + userScore + ".";
+
+    let blank = document.querySelector("#rightWrong");
+    blank.innerHTML = "";
+
+    var endPageInitials = document.createElement("input");
+    blank.appendChild(endPageInitials);
+
+    var submitInitialBtn = document.createElement("button");
+    submitInitialBtn.textContent = "Submit";
+    blank.appendChild(submitInitialBtn);
+
+    submitInitialBtn.addEventListener("click", () => {
+        
+        // rest variable
+        if (endPageInitials.value.length === 0) return false;
+
+        let storeInitials = (...input) => {
+            let data = { "name":input[0], "score":input[1]}
+            var quizScores = []
+            var scores = {}
+
+            if (localStorage.getItem("object") === null){   
+                scores.quizScores = quizScores
+            } else {
+                try {
+                    scores = JSON.parse(localStorage.getItem("object"));
+                } catch {
+                    //Reset object array if JSON.parse fails
+                    scores.quizScores = quizScores
+                }            
+            }
+            scores.quizScores.push(data);
+            localStorage.setItem("object", JSON.stringify(scores));
+        }
+       storeInitials(endPageInitials.value, userScore);
+
+        var playAgain = document.createElement("button");
+        playAgain.textContent= "Play Again!";
+        blank.appendChild(playAgain);
+
+        playAgain.addEventListener("click", () => {
+            location.reload();
+        })
+    });
+
+    document.querySelector("input").value = "";
+
+    endPageInitials.addEventListener("submit", endQuizPage);   
+};
+function renderInitials() {
+    submitInitialBtn.addEventListener('click', function(event) {
+        event.preventDefault;
+}
+)};
 clickStart.addEventListener('click', quiz);
