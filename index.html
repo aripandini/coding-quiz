@@ -8,30 +8,20 @@
     </head>
     <body>
         <header>
-                <div class="score"><a href="#">View High Score</a></div>
-                <div class="time">Time:</div>
+                <div id="score" class="score"><a href="./score.html">View High Score</a></div>
+                <div id ="timer" class="timer">Time</div>
         </header>
-        <main>
-            <section id="intro" class="intro">
-                <h1> Coding Quiz Challenge </h1>
-            <p> Try to answer the following code-related questions within the time limit.
-                Keep in mind that incorrect answers will penalize your score/time by 5 seconds!
-            </p>
-            <button class="startQuiz">Start Quiz</button>
-            </section>
-            <section id="questions" class="hide">
-                <h2 id="questionTitle"> </h2>
-                <div id="options" class="options"></div>
-            </section>
-            <section id="end" class="hide">
-                <h2>Quiz Over!</h2>
-                <p>Your final score is <span id="finalScore"></span>.</p>
-                <p>
-                  Enter initials: <input type="text" id="initials" max="4" />
-                  <button id="submit">Submit</button>
-                </p>
-            </section>
-        </main>
-        <script src="./assets/js/script-index.js"></script>
+    <main>
+        <section id="intro" class="intro">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the 60 seconds time limit. </p>
+            <p>Keep in mind that incorrect answers will penalize your score/time by 5 seconds!</p>
+            <button id="startQuiz" class="startQuiz">Start Quiz</button>
+        </section>
+        <section id="quiz" class="quiz">
+        </section>
+        <section id="rightWrong"></section>
+    </main>
+    <script src="./assets/js/script-index.js"></script>
     </body>
 </html>
