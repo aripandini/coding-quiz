@@ -11,15 +11,15 @@ function highScores() {
     
     sortedScores.forEach(function (score, i) {
         let tr = document.createElement('tr'); 
+        let td0 = document.createElement('td');
+        td0.textContent = i + ".";
+        tr.appendChild(td0);
         let td1 = document.createElement('td');
-        td1.textContent = i + ".";
+        td1.textContent = score.name;
         tr.appendChild(td1);
         let td2 = document.createElement('td');
-        td2.textContent = score.name;
+        td2.textContent = score.score;
         tr.appendChild(td2);
-        let td3 = document.createElement('td');
-        td3.textContent = score.score;
-        tr.appendChild(td3);
         table.appendChild(tr);
     });
 }

@@ -108,10 +108,6 @@ footer section a:hover {
     color: var(--primary);
     opacity: .8;
 }
-/* .backMain {
-    
-} */
-
 .backMain a {
     font-size: 18px;
     background-color: var(--highlights);
@@ -119,7 +115,6 @@ footer section a:hover {
     padding: 10px;
     align-items: center;
 }
-
 .clearHighScores {
     font-size: 18px;
     background-color: var(--highlights);
@@ -132,11 +127,12 @@ footer section a:hover {
     color: var(--primary);
     opacity: .8;
 }
-/* fix this part to get buttons same size */
 .quiz div {
     flex-direction: column;
     align-items: flex-start;
 }
-/* #answerGroup { */
-
-/* } */
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 20px;
+}
