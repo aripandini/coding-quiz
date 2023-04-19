@@ -1,4 +1,3 @@
-// List of all questions and answers
 var questions = [{
     question: "Commonly used data types DO NOT include:",
     a: "1. Strings",
@@ -40,7 +39,6 @@ var questions = [{
     correct: "4. console.log",
 }];
 
-//Setting Variables 
 var clickStart = document.getElementById("startQuiz");
 var timerEl = document.getElementById("timer");
 var timeLeft = 60;
@@ -48,7 +46,6 @@ var scoreStorage = {}
 var quizTime;
 var questionSection = document.querySelector("#quiz");
 
-//Timer Function
 function timer() {
     timerEl.textContent = "Time remaining: " + timeLeft + "s";
     quizTime = setInterval(function () {
@@ -68,7 +65,6 @@ function adjustTime(amount) {
     timerEl.textContent = "Time remaining: " + timeLeft + "s";
 }
 
-//Start Time + Set Up questions
 clickStart.onclick = timer;
 var openQuestion = function (question) {
     questionSection.innerHTML = "";
@@ -102,9 +98,9 @@ var openQuestion = function (question) {
     questionGroup.appendChild(answerC);
     questionGroup.appendChild(answerD);
 
-    questionSection.appendChild(questionGroup)
+    questionSection.appendChild(questionGroup);
 }
-// Question Logics
+
 var currentQuestionIndex = 0;
 var userScore = 0;
 var correctAnswer = questions[currentQuestionIndex].correct;
@@ -114,7 +110,7 @@ var answerClick = function(event) {
     var userAnswer = event.target.textContent;
     correctAnswer = questions[currentQuestionIndex].correct;
 
-    // determine if answer is wrong or right
+    
  var rightWrong = document.querySelector("#rightWrong");
     if (userAnswer !== correctAnswer) {
          adjustTime(-5);
@@ -145,7 +141,6 @@ function resetDisplay() {
     document.querySelector("#intro").style.display = "none";
 }
 
-// End of Quiz  
 var initials; 
 function endQuizPage() {
     resetDisplay();
@@ -178,7 +173,6 @@ function endQuizPage() {
 
     submitInitialBtn.addEventListener("click", () => {
         
-        // rest variable
         if (endPageInitials.value.length === 0) return false;
 
         let storeInitials = (...input) => {
@@ -192,7 +186,6 @@ function endQuizPage() {
                 try {
                     scores = JSON.parse(localStorage.getItem("object"));
                 } catch {
-                    //Reset object array if JSON.parse fails
                     scores.quizScores = quizScores
                 }            
             }
