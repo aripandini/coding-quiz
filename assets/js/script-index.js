@@ -76,6 +76,9 @@ var openQuestion = function (question) {
     var questionHeader = document.createElement("h2");
     questionHeader.textContent = question.question;
 
+    var questionGroup = document.createElement("section")
+    questionGroup.id="answeGroup"
+
     var answerA = document.createElement("button");
     answerA.textContent = question.a;
     answerA.addEventListener("click", answerClick);
@@ -93,10 +96,13 @@ var openQuestion = function (question) {
     answerD.addEventListener("click", answerClick);
 
     questionSection.appendChild(questionHeader);
-    questionSection.appendChild(answerA);
-    questionSection.appendChild(answerB);
-    questionSection.appendChild(answerC);
-    questionSection.appendChild(answerD);
+    
+    questionGroup.appendChild(answerA);
+    questionGroup.appendChild(answerB);
+    questionGroup.appendChild(answerC);
+    questionGroup.appendChild(answerD);
+
+    questionSection.appendChild(questionGroup)
 }
 // Question Logics
 var currentQuestionIndex = 0;

@@ -1,5 +1,9 @@
-/* CREATE VARIABLES LATER */
-
+:root {
+    --primary: #0d0106;
+    --secondary: #fbfbff;
+    --highlights: #657ed4;
+    --rightWrong: lightcoral; 
+}
 /* Removing Default Styling */
 * {
     margin: 0;
@@ -9,10 +13,11 @@
 /* Body Styling */
 body {
     font-family: Montseratt, Open Sans, sans-serif;
+    background-color: var(--secondary)
 }
 /* Header Elements, Attributes & Tags */
 header {
-    /* border-bottom: 5px solid black;  */
+    font-size: 18px;
     justify-content: space-between;
     padding: 20px;
     margin: 5px;
@@ -21,20 +26,19 @@ header {
 }
 header div a {
     text-decoration: none;
+    color: var(--primary)
 }
 header div a:hover {
-    color: red;
+    color: var(--highlights);
     opacity: .8;
 }
 .score {
     padding: 5px;
     border-bottom: 2px solid;
-    background-color:;
 }
 .timer {
     padding: 5px;
     border-bottom: 2px solid;
-    background-color:;
 }
 /* Main Elements, Attributes & Tags */
 .intro{
@@ -44,30 +48,95 @@ header div a:hover {
 }
 .intro h1 {
     font-size: 35px;
+    padding: 20px;
+}
+.intro p {
+    font-size: 18px;
+    padding: 5px;
 }
 .startQuiz {
     font-size: 26px;
-    background-color: blueviolet;
-    color: white;
+    background-color: var(--highlights);
+    color: var(--secondary);
     font-weight: bold;
     border-radius: 15px;
     padding: 10px;
 }
+.startQuiz:hover {
+    color: var(--primary);
+    opacity: .8;
+}
 .hide {
     display: none;
 }
-  button {
-    display: inline-block;
+button {
     margin: 5px;
-    /* cursor: pointer; */
+    cursor: pointer;
     font-size: 100%;
     border-radius: 5px;
     padding: 2px 10px;
-    color: black;
+    color: var(--primary);
     border: 0;
     transition: background-color 0.1s;
   }
   button:hover {
-    background-color:;
+    background-color: var(--highlights);
   }
-  
+  .quiz {
+    text-align: center;
+    line-height: 55px;
+  }
+  #rightWrong {
+    color: var(--rightWrong);
+    font-style: italic;
+    text-align: center;
+    margin: 20px;
+  }
+  .scores {
+    padding: 20px;
+    margin: 5px;
+    display: flex;
+  }
+  .scores h1 {
+    width: 15%;
+  }
+  footer section a {
+    text-decoration: none;
+    color: var(--secondary)
+}
+footer section a:hover {
+    color: var(--primary);
+    opacity: .8;
+}
+/* .backMain {
+    
+} */
+
+.backMain a {
+    font-size: 18px;
+    background-color: var(--highlights);
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+}
+
+.clearHighScores {
+    font-size: 18px;
+    background-color: var(--highlights);
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+    color:var(--secondary);
+}
+.clearHighScores:hover {
+    color: var(--primary);
+    opacity: .8;
+}
+/* fix this part to get buttons same size */
+.quiz div {
+    flex-direction: column;
+    align-items: flex-start;
+}
+/* #answerGroup { */
+
+/* } */
