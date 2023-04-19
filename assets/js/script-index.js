@@ -161,6 +161,11 @@ function endQuizPage() {
     endPageTitle.innerHTML = "Quiz Over!";
     endPageScore.innerHTML = "Your final score is " + userScore + ".";
 
+    var subInitials = document.createElement("p");
+    questionSection.appendChild(subInitials);
+
+    subInitials.innerHTML = "Please enter your initials";
+
     let blank = document.querySelector("#rightWrong");
     blank.innerHTML = "";
 
