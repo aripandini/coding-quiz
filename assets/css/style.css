@@ -4,18 +4,15 @@
     --highlights: #657ed4;
     --rightWrong: lightcoral; 
 }
-/* Removing Default Styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/* Body Styling */
 body {
     font-family: Montseratt, Open Sans, sans-serif;
     background-color: var(--secondary)
 }
-/* Header Elements, Attributes & Tags */
 header {
     font-size: 18px;
     justify-content: space-between;
@@ -40,7 +37,6 @@ header div a:hover {
     padding: 5px;
     border-bottom: 2px solid;
 }
-/* Main Elements, Attributes & Tags */
 .intro{
     text-align: center;
     padding: 10px;
